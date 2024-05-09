@@ -7,8 +7,8 @@ title: Hexo
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: Mr.K
+language: zh-CN
 timezone: ''
 
 # URL
@@ -104,3 +104,10 @@ deploy:
   type: git
   repository: git@github.com:Allure-Luv/Allure-Luv.github.io.git
   branch: main
+
+# searchdb
+search:
+  path: search.json
+  field: post
+  format: html
+  limit: 10000
