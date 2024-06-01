@@ -87,4 +87,14 @@ b. 在本地拉取新创建的新分支
 c. 将文件夹中除`.git`文件之外所有文件均删除  
 d. 将博客源码除`.deploy_git`文件复制到拉取的文件夹中（注意要有.gitignore文件）  
 e. 将本地仓库推送至远端仓库  
-注：因为git不支持嵌套，因此在github中拉取的主题中的.git文件需要删除
+注：因为git不支持嵌套，因此在github中拉取的主题中的.git文件需要删除  
+
+## 博客资源管理
+通常在 `source/images` 文件夹下可以存放文章所引用的图片，但当资源较多时，可以启用资源管理文件夹实现分组管理  
+在 `_config.yml` 文件中置 `post_asset_folder` 选项为true，这样在进行博客创建的时候，会自动创建一个与文章同名的文件夹用于放置文章引用的资源  
+在这种方式下，图片、链接等无法使用`markdown`语法链接，具体链接方式为：  
+```
+{% asset_path slug %}
+{% asset_img slug [title] %}
+{% asset_link slug [title] %}
+```
