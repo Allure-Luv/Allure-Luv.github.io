@@ -21,28 +21,44 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Vitis HLS 基础学习笔记 数据类型1. 任意精度数据类型12345#include &lt;ap_int.h&gt;ap_[u]int&lt;W&gt;  &#x2F;&#x2F; 最大可扩展至32k位#include &lt;ap_fixed.h&gt;ap_[u]fixed&lt;W, I, Q, O&gt;    &#x2F;&#x2F; W总位宽、I整数位宽、Q量化模式、O溢出模式 2. 变量初始化1234ap_int&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vitis HLS 基础">
+<meta property="og:url" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Vitis HLS 基础学习笔记 数据类型1. 任意精度数据类型12345#include &lt;ap_int.h&gt;ap_[u]int&lt;W&gt;  &#x2F;&#x2F; 最大可扩展至32k位#include &lt;ap_fixed.h&gt;ap_[u]fixed&lt;W, I, Q, O&gt;    &#x2F;&#x2F; W总位宽、I整数位宽、Q量化模式、O溢出模式 2. 变量初始化1234ap_int&amp;">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/1.jpg">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/for_pipline.png">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/for_unroll.png">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/merge.png">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow.png">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow%E5%B1%80%E9%99%90%E6%80%A71.png">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow1.png">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow%E5%B1%80%E9%99%90%E6%80%A72.png">
+<meta property="og:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow2.png">
+<meta property="article:published_time" content="2024-05-31T13:21:26.000Z">
+<meta property="article:modified_time" content="2024-06-01T08:36:33.622Z">
 <meta property="article:author" content="Mr.K">
+<meta property="article:tag" content="Vitis HLS">
+<meta property="article:tag" content="FPGA">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/1.jpg">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Hexo</title>
+  <title>Vitis HLS 基础 | Hexo</title>
   
 
 
@@ -178,9 +194,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -196,10 +213,9 @@
       <meta itemprop="name" content="Hexo">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Vitis HLS 基础</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Vitis HLS 基础
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -238,7 +254,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Vitis HLS 基础学习笔记</p>
+        <p>Vitis HLS 基础学习笔记</p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="1-任意精度数据类型"><a href="#1-任意精度数据类型" class="headerlink" title="1. 任意精度数据类型"></a>1. 任意精度数据类型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;ap_int.h&gt;</span><br><span class="line">ap_[u]int&lt;W&gt;  // 最大可扩展至32k位</span><br><span class="line"></span><br><span class="line">#include &lt;ap_fixed.h&gt;</span><br><span class="line">ap_[u]fixed&lt;W, I, Q, O&gt;    // W总位宽、I整数位宽、Q量化模式、O溢出模式</span><br></pre></td></tr></table></figure>
 <h3 id="2-变量初始化"><a href="#2-变量初始化" class="headerlink" title="2. 变量初始化"></a>2. 变量初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ap_int&lt;6&gt; a_6bit_var_c = -22;</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_d(22);</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_r2(&quot;0b101010&quot;, 2);   // 指定进制数</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_r2(&quot;101010&quot;, 2);</span><br></pre></td></tr></table></figure>
 <h3 id="3-数据类型转换"><a href="#3-数据类型转换" class="headerlink" title="3. 数据类型转换"></a>3. 数据类型转换</h3><p>显示转换</p>
@@ -276,211 +292,34 @@ Expected type (Variable)
 <p>此时需要保证两个分支经过相同的处理模块，不需要处理时在模块内为简单的复制  </p>
 <img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow2.png" class="" title="dataflow局限性2处理">     
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Vitis-HLS/" rel="tag"># Vitis HLS</a>
+              <a href="/tags/FPGA/" rel="tag"># FPGA</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/30/An%20Intro%20to%20DL%20for%20Physical%20Layer/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr.K">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/05/30/An%20Intro%20to%20DL%20for%20Physical%20Layer/" class="post-title-link" itemprop="url">An Intro to DL for the Physical Layer</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-05-30 21:21:26" itemprop="dateCreated datePublished" datetime="2024-05-30T21:21:26+08:00">2024-05-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-31 18:13:32" itemprop="dateModified" datetime="2024-05-31T18:13:32+08:00">2024-05-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">论文阅读-通信系统</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="文章出处"><a href="#文章出处" class="headerlink" title="文章出处"></a>文章出处</h2><p>O’shea T, Hoydis J. An introduction to deep learning for the physical layer[J]. IEEE Transactions on Cognitive Communications and Networking, 2017, 3(4): 563-575.(Citations 2607)  </p>
-<h2 id="论文总览"><a href="#论文总览" class="headerlink" title="论文总览"></a>论文总览</h2><ul>
-<li><p>主要内容：文章是一篇综述类文章，总结了ML在通信系统物理层上的应用，提出相关观点，并在该领域进行展望</p>
-</li>
-<li><p>主要贡献：</p>
-</li>
-</ul>
-<ol>
-<li>证明使用DNN网络代替发射机、接收机以及信道等通信系统部分是可行的，并可适用于最优解未知的通道模型和损失函数  </li>
-<li>证明上述概念可以扩展至多发多收场景下，利用神经网络有助于解决干扰信道问题。同时，收发机的实现可以根据公共或单独的性能指标进行联合优化  </li>
-<li>介绍了 <code>radio transformer networks</code> ，该网络可以在接收机融入预定义校正算法。该网络可以集成对变换信号执行的任务到端到端训练过程中</li>
-<li>研究了NN在复值样本上解决调制分类问题的可行性，证明其学习到的特征优于并可以取代传统方式</li>
-</ol>
-<h2 id="DL在物理层上的潜力"><a href="#DL在物理层上的潜力" class="headerlink" title="DL在物理层上的潜力"></a>DL在物理层上的潜力</h2><ol>
-<li>传统方式对通信系统的建模很难完美描述其实际特性，使用DL可以降低模型对数学可处理性的要求，同时可以针对特定硬件和无法完美描述的信道进行优化</li>
-<li>传统通信系统设计要求信号处理过程模块化、流程化，但模块化的通信系统已被证明为是次优的，而模块之间的联合优化会使得各个模块的实现十分繁琐，使用DL取代传统物理层不会被严格区分为各个模块，它是针对端到端性能进行优化  </li>
-<li>神经网络的运行能够有很高的并行度和更低的数据精度，因此可以执行速度更快、功耗更低</li>
-<li>结合第3点，目前有足以支撑神经网络计算的硬件平台，例如：GPU、Eyeriss架构等。在这些架构上可以轻松实现高资源利用率、高吞吐量，并只需要最少的特定于应用程序的调整或优化</li>
-</ol>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/30/An%20Intro%20to%20DL%20for%20Physical%20Layer/" rel="prev" title="An Intro to DL for the Physical Layer">
+      <i class="fa fa-chevron-left"></i> An Intro to DL for the Physical Layer
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/09/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%EF%BC%88hexo-github%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr.K">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/05/09/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%EF%BC%88hexo-github%EF%BC%89/" class="post-title-link" itemprop="url">博客搭建（hexo+github）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-05-09 21:21:26" itemprop="dateCreated datePublished" datetime="2024-05-09T21:21:26+08:00">2024-05-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-06-01 14:06:54" itemprop="dateModified" datetime="2024-06-01T14:06:54+08:00">2024-06-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="博客搭建基本流程（hexo-github）"><a href="#博客搭建基本流程（hexo-github）" class="headerlink" title="博客搭建基本流程（hexo + github）"></a>博客搭建基本流程（hexo + github）</h2><h3 id="hexo环境搭建"><a href="#hexo环境搭建" class="headerlink" title="hexo环境搭建"></a>hexo环境搭建</h3><p>hexo环境搭建需要下载node.js、git，下载之后在cmd中输入下面命令检查node、npm、git是否安装成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; node -v</span><br><span class="line"></span><br><span class="line">&gt; npm -v</span><br><span class="line"></span><br><span class="line">&gt; git -v</span><br></pre></td></tr></table></figure>
-
-<p>确认node.js、git安装无误后，使用git bash进行hexo的安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>安装完成之后，创建一个博客文件夹，在git bash中输入如下命令进行初始化和本地预览</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init                           <span class="comment"># 初始化</span></span><br><span class="line">$ hexo install                        <span class="comment"># 安装组件</span></span><br><span class="line"></span><br><span class="line">$ hexo generate                       <span class="comment"># 生成页面 （可以简写为 hexo g ）</span></span><br><span class="line">$ hexo server                         <span class="comment"># 预览 （默认端口为4000，若被占用可以通过 -p 更换端口）</span></span><br></pre></td></tr></table></figure>
-
-<p>此时访问”localhost:4000”即可预览博客</p>
-<p>博客文件夹目录结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- _config.yml                          # 站点配置信息  </span><br><span class="line">- package.json                         # 应用程序信息  </span><br><span class="line">- scaffolds                            # 模板文件  </span><br><span class="line">- source                               # 存放用户源文件  </span><br><span class="line">- themes                               # 存放主题文件  </span><br><span class="line">- public                               # 静态网站文件</span><br></pre></td></tr></table></figure>
-
-<h3 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h3><p>在部署之前要确保主机通过ssh密钥域github连接，可通过如下命令进行检查</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<p>连接成功后在github中新建博客仓库，仓库名称为”username.github.io”，username为github用户名<br>创建完成之后对<code>_config.yml</code>文件中的deploy部分进行如下修改，将博客部署在main分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Allure-Luv/Allure-Luv.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
-
-<p>修改完成后，运行如下命令进行部署</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo cl</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-
-<p>部署之后可以访问<code>username.github.io</code>来查看部署情况</p>
-<h2 id="跨设备移植博客"><a href="#跨设备移植博客" class="headerlink" title="跨设备移植博客"></a>跨设备移植博客</h2><p>根据上述步骤，博客部署在main分支，利用git分支机制，将源码推送至另一分支，即可实现源码的保存<br>在更换设备后，仅需要搭建hexo环境，从github中拉取源码即可，具体步骤如下：<br>a. 在github中创建新的分支，这里为<code>gh-pages</code>，并将其设置为默认分支，为了每次方便上传源码<br>b. 在本地拉取新创建的新分支<br>c. 将文件夹中除<code>.git</code>文件之外所有文件均删除<br>d. 将博客源码除<code>.deploy_git</code>文件复制到拉取的文件夹中（注意要有.gitignore文件）<br>e. 将本地仓库推送至远端仓库<br>注：因为git不支持嵌套，因此在github中拉取的主题中的.git文件需要删除  </p>
-<h2 id="博客资源管理"><a href="#博客资源管理" class="headerlink" title="博客资源管理"></a>博客资源管理</h2><p>通常在 <code>source/images</code> 文件夹下可以存放文章所引用的图片，但当资源较多时，可以启用资源管理文件夹实现分组管理<br>在 <code>_config.yml</code> 文件中置 <code>post_asset_folder</code> 选项为true，这样在进行博客创建的时候，会自动创建一个与文章同名的文件夹用于放置文章引用的资源<br>在这种方式下，图片、链接等无法使用<code>markdown</code>语法链接，具体链接方式为：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -533,6 +372,7 @@ Expected type (Variable)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%BB%E6%84%8F%E7%B2%BE%E5%BA%A6%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. 任意精度数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">2. 变量初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">3. 数据类型转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF%E4%BC%98%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">for循环优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%A1%A1%E9%87%8F%E6%8C%87%E6%A0%87"><span class="nav-number">2.1.</span> <span class="nav-text">1. 衡量指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%A4%84%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">2. 流水线处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BE%AA%E7%8E%AF%E5%B1%95%E5%BC%80"><span class="nav-number">2.3.</span> <span class="nav-text">3. 循环展开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%BE%AA%E7%8E%AF%E8%9E%8D%E5%90%88"><span class="nav-number">2.4.</span> <span class="nav-text">4. 循环融合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%95%B0%E6%8D%AE%E6%B5%81%E5%A4%84%E7%90%86"><span class="nav-number">2.5.</span> <span class="nav-text">5. 数据流处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dataflow%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F"><span class="nav-number">2.5.1.</span> <span class="nav-text">dataflow的局限性与解决方式</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
