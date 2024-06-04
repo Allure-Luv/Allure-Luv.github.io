@@ -29,7 +29,7 @@
 <meta property="og:description" content="文章出处O’shea T, Hoydis J. An introduction to deep learning for the physical layer[J]. IEEE Transactions on Cognitive Communications and Networking, 2017, 3(4): 563-575.(Citations 2607)   论文总览 主要内容：文章是一篇">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-30T13:21:26.000Z">
-<meta property="article:modified_time" content="2024-06-03T07:17:19.628Z">
+<meta property="article:modified_time" content="2024-06-04T06:00:50.624Z">
 <meta property="article:author" content="Mr.K">
 <meta property="article:tag" content="Physical Layer">
 <meta property="article:tag" content="Deep Learning">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-06-03 15:17:19" itemprop="dateModified" datetime="2024-06-03T15:17:19+08:00">2024-06-03</time>
+                <time title="修改时间：2024-06-04 14:00:50" itemprop="dateModified" datetime="2024-06-04T14:00:50+08:00">2024-06-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -264,7 +264,14 @@
 <li>神经网络的运行能够有很高的并行度和更低的数据精度，因此可以执行速度更快、功耗更低</li>
 <li>结合第3点，目前有足以支撑神经网络计算的硬件平台，例如：GPU、Eyeriss架构等。在这些架构上可以轻松实现高资源利用率、高吞吐量，并只需要最少的特定于应用程序的调整或优化</li>
 </ol>
-<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>当前DL在物理层的应用分为两个方面：  </p>
+<ul>
+<li>使用DL增强现有算法  </li>
+<li>使用DL完全取代现有算法</li>
+</ul>
+<h3 id="使用DL增强现有算法"><a href="#使用DL增强现有算法" class="headerlink" title="使用DL增强现有算法"></a>使用DL增强现有算法</h3><p>这方面应用源于现有迭代算法的深度展开，将每次迭代解释为一组NN  </p>
+<h3 id="完全取代现有算法"><a href="#完全取代现有算法" class="headerlink" title="完全取代现有算法"></a>完全取代现有算法</h3><p>这方面应用直接推翻传统算法，完全使用DL实现如功率控制、调制识别、信号压缩、信道编码等</p>
+<h2 id="机器学习在物理层的应用"><a href="#机器学习在物理层的应用" class="headerlink" title="机器学习在物理层的应用"></a>机器学习在物理层的应用</h2><h3 id="AutoEncoder-实现端到端通信系统"><a href="#AutoEncoder-实现端到端通信系统" class="headerlink" title="AutoEncoder 实现端到端通信系统"></a><code>AutoEncoder</code> 实现端到端通信系统</h3><h3 id="AutoEncoder-实现多发多收通信系统"><a href="#AutoEncoder-实现多发多收通信系统" class="headerlink" title="AutoEncoder 实现多发多收通信系统"></a><code>AutoEncoder</code> 实现多发多收通信系统</h3><h3 id="Radio-Transformer-networks-实现增强信号处理算法"><a href="#Radio-Transformer-networks-实现增强信号处理算法" class="headerlink" title="Radio Transformer networks 实现增强信号处理算法"></a><code>Radio Transformer networks</code> 实现增强信号处理算法</h3><h3 id="CNNs-用于分类任务"><a href="#CNNs-用于分类任务" class="headerlink" title="CNNs 用于分类任务"></a><code>CNNs</code> 用于分类任务</h3>
     </div>
 
     
@@ -349,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%87%BA%E5%A4%84"><span class="nav-number">1.</span> <span class="nav-text">文章出处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E6%80%BB%E8%A7%88"><span class="nav-number">2.</span> <span class="nav-text">论文总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DL%E5%9C%A8%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%8A%E7%9A%84%E6%BD%9C%E5%8A%9B"><span class="nav-number">3.</span> <span class="nav-text">DL在物理层上的潜力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">相关工作</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%87%BA%E5%A4%84"><span class="nav-number">1.</span> <span class="nav-text">文章出处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E6%80%BB%E8%A7%88"><span class="nav-number">2.</span> <span class="nav-text">论文总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DL%E5%9C%A8%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%8A%E7%9A%84%E6%BD%9C%E5%8A%9B"><span class="nav-number">3.</span> <span class="nav-text">DL在物理层上的潜力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8DL%E5%A2%9E%E5%BC%BA%E7%8E%B0%E6%9C%89%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">使用DL增强现有算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E5%8F%96%E4%BB%A3%E7%8E%B0%E6%9C%89%E7%AE%97%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">完全取代现有算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9C%A8%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">机器学习在物理层的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoEncoder-%E5%AE%9E%E7%8E%B0%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.1.</span> <span class="nav-text">AutoEncoder 实现端到端通信系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoEncoder-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E5%8F%91%E5%A4%9A%E6%94%B6%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.2.</span> <span class="nav-text">AutoEncoder 实现多发多收通信系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Radio-Transformer-networks-%E5%AE%9E%E7%8E%B0%E5%A2%9E%E5%BC%BA%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%AE%97%E6%B3%95"><span class="nav-number">5.3.</span> <span class="nav-text">Radio Transformer networks 实现增强信号处理算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNNs-%E7%94%A8%E4%BA%8E%E5%88%86%E7%B1%BB%E4%BB%BB%E5%8A%A1"><span class="nav-number">5.4.</span> <span class="nav-text">CNNs 用于分类任务</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

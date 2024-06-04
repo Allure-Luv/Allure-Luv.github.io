@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-06-03 22:30:28" itemprop="dateModified" datetime="2024-06-03T22:30:28+08:00">2024-06-03</time>
+                <time title="修改时间：2024-06-04 16:07:10" itemprop="dateModified" datetime="2024-06-04T16:07:10+08:00">2024-06-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,15 +240,104 @@
       
           <p>Vitis HLS 基础学习笔记</p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="1-任意精度数据类型"><a href="#1-任意精度数据类型" class="headerlink" title="1. 任意精度数据类型"></a>1. 任意精度数据类型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;ap_int.h&gt;</span><br><span class="line">ap_[u]int&lt;W&gt;  // 最大可扩展至32k位</span><br><span class="line"></span><br><span class="line">#include &lt;ap_fixed.h&gt;</span><br><span class="line">ap_[u]fixed&lt;W, I, Q, O&gt;    // W总位宽、I整数位宽、Q量化模式、O溢出模式</span><br></pre></td></tr></table></figure>
-<h3 id="2-变量初始化"><a href="#2-变量初始化" class="headerlink" title="2. 变量初始化"></a>2. 变量初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ap_int&lt;6&gt; a_6bit_var_c = -22;</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_d(22);</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_r2(&quot;0b101010&quot;, 2);   // 指定进制数</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_r2(&quot;101010&quot;, 2);</span><br></pre></td></tr></table></figure>
-<h3 id="3-数据类型转换"><a href="#3-数据类型转换" class="headerlink" title="3. 数据类型转换"></a>3. 数据类型转换</h3><p>显示转换</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line">(Expected type) Variable</span><br><span class="line">Expected type (Variable)</span><br><span class="line">```  </span><br><span class="line">常用运算的数据类型转换</span><br><span class="line">&#123;% asset_img 1.jpg 数据类型转换 %&#125;  </span><br><span class="line">可以使用`&lt;typeinfo&gt;`库文件中的`typeid`来查看数据类型</span><br><span class="line"></span><br><span class="line">## for循环优化</span><br><span class="line"></span><br><span class="line">### 1. 衡量指标</span><br><span class="line"></span><br><span class="line">`Loop Trip Count`：循环触发次数  </span><br><span class="line">`Loop Iteration Latency`：迭代延时（单次迭代时延）  </span><br><span class="line">`Loop Iteration Interval`：迭代间隔（两次迭代间隔）  </span><br><span class="line">`Loop Latency`：循环时延（迭代时延 * 迭代次数）  </span><br><span class="line">`Function Latency`：函数时延（完整for循环执行时延）  </span><br><span class="line">`Function Iteration Interval`：函数间隔（两次循环的间隔，考虑到循环条件的判断，可能会多一个周期）</span><br><span class="line"></span><br><span class="line">### 2. 流水线处理</span><br><span class="line"></span><br><span class="line">使用`#pragma HLS PIPLINE`添加约束  </span><br><span class="line">&#123;% asset_img for_pipline.png 流水线处理 %&#125;  </span><br><span class="line">流水线处理使得数据读取、计算、存储三个过程在一定程度上并行处理，即上一个数据在计算过程中就开始读取下一个数据  </span><br><span class="line"></span><br><span class="line">### 3. 循环展开</span><br><span class="line"></span><br><span class="line">使用`#pragma HLS UNROLL`添加约束  </span><br><span class="line">&#123;% asset_img for_unroll.png 循环展开 %&#125;    </span><br><span class="line">可以根据循环迭代参数`i`对循环计算并行处理，同时可以约束展开的子循环个数  </span><br><span class="line"></span><br><span class="line">### 4. 循环融合</span><br><span class="line"></span><br><span class="line">使用`#pragma HLS merge`添加约束  </span><br><span class="line">&#123;% asset_img merge.png 循环融合 %&#125;   </span><br><span class="line">循环融合可以将两个不具有顺序逻辑的循环同时执行  </span><br><span class="line">循环边界的界定如下：</span><br><span class="line">- `Loop_A`的循环次数为`M`，`Loop_B`的循环次数为`N`，合并后循环次数为`MAX(M, N)`  </span><br><span class="line">- 若一个循环边界为变量，另一个为常量时，无法合并  </span><br><span class="line">- 两个循环边界均为变量时，可以约束为共同循环部分和额外循环部分  </span><br><span class="line"></span><br><span class="line">### 5. 数据流处理</span><br><span class="line">使用`#pragma HLS dataflow`添加约束  </span><br><span class="line">&#123;% asset_img dataflow.png 数据流处理 %&#125;  </span><br><span class="line">数据流处理用于处理多循环连接问题，循环之间的通道使用`RAM`、`FIFO`或`Reg`实现，加速方式为在`Loop_B`处理的同时`Loop_A`进行下一组数据的处理</span><br><span class="line"></span><br><span class="line">#### `dataflow`的局限性与解决方式  </span><br><span class="line"></span><br><span class="line">当出现一个循环的结果要送入两个不同循环进行后续处理的情况时，无法直接使用dataflow  </span><br><span class="line">&#123;% asset_img dataflow局限性1.png dataflow局限性1 %&#125;   </span><br><span class="line">此时需要将第一个循环结果复制之后，分别送入两个循环  </span><br><span class="line">&#123;% asset_img dataflow1.png dataflow局限性1处理 %&#125;   </span><br><span class="line"></span><br><span class="line">当出现一个循环结果经过不同处理过程最终又送入一个循环的情况时，无法直接使用dataflow  </span><br><span class="line">&#123;% asset_img dataflow局限性2.png dataflow局限性2 %&#125;   </span><br><span class="line">此时需要保证两个分支经过相同的处理模块，不需要处理时在模块内为简单的复制  </span><br><span class="line">&#123;% asset_img dataflow2.png dataflow局限性2处理 %&#125;     </span><br><span class="line"></span><br><span class="line">#### `dataflow`的存储管理  </span><br><span class="line"></span><br><span class="line">标量、指针、引用变量以及函数返回值，HLS使用FIFO实现通道  </span><br><span class="line">数组，`HLS`使用`FIFO`或`ping-pong ram`实现：  </span><br><span class="line">- 若HLS确定数据流为顺序的，则默认使用深度为1的FIFO  </span><br><span class="line">- 若不能确定则使用`ping-pong ram`    </span><br><span class="line"></span><br><span class="line">上述配置可以在`congfig_dataflow`中配置，明确设定FIFO深度，存储器尺寸等  </span><br><span class="line"></span><br><span class="line">### 6. 嵌套循环优化   </span><br><span class="line"></span><br><span class="line">嵌套循环主要通过`pipline`进行优化，`pipline`会合并上层循环、展开下层循环</span><br><span class="line"></span><br><span class="line">#### a. 循环边界为常数，循环体仅在最内层循环  </span><br><span class="line"></span><br><span class="line">对外层循环做pipline处理，会使内部循环全部展开，可以达到最低延时但是会消耗更多资源  </span><br><span class="line">对内层循环做pipline处理，会使外部循环展开，即若外部循环边界为`M`，内部循环边界为`N`，相当于执行`M*N`次内部循环，效果介于不处理和对外层循环处理之间  </span><br><span class="line">注：`Loop_flatten`展开最外层循环要求必须为`a`、`b`两种情况</span><br><span class="line"></span><br><span class="line">#### b. 循环边界为常数，循环体存在多层循环  </span><br><span class="line"></span><br><span class="line">以如下代码为例：  </span><br><span class="line"></span><br><span class="line">&#123;% asset_img imperfect_loop1.png 非完美循环示例 %&#125;  </span><br><span class="line"></span><br><span class="line">若对最内层做`pipline`处理，由于在`Col`循环内存在初始化，无法展开，仅能对`Row`和`Col`进行展开，最终结果为两层嵌套循环   </span><br><span class="line">若对中间层循环做`pipline`处理，仍为展开`Row`和`Col`，同时展平最内层循环，最终仅有一层循环  </span><br><span class="line">若对最外层循环做`pipline`处理，会展开所有子循环，即最终仅有一层循环且循环边界为`Col`的循环边界</span><br><span class="line"></span><br><span class="line">#### unroll vs flatten  </span><br><span class="line"></span><br><span class="line">对于for循环嵌套来说，`flatten`为合并两次循环，`unroll`为单个循环  </span><br><span class="line"></span><br><span class="line">``` Cpp</span><br><span class="line">    Loop_A:</span><br><span class="line">    for (i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">        Loop_B:</span><br><span class="line">        for (j = 0; j &lt; 3; j++) &#123;</span><br><span class="line">            Loop_C:</span><br><span class="line">            for (k = 0; k &lt; 3; k++) &#123;</span><br><span class="line">                Loop_Entiy;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">若对`Loop_B`使用`pipline`进行优化，HLS会合并（flatten）上层循环，展开（unroll）下层循环  </span><br><span class="line">合并`Loop_A`与`Loop_B`，即外部循环变为一个同时循环边界为两个循环的和  </span><br><span class="line">展开`Loop_C`，即同时计算`Loop_C`下每个循环变量对应的循环体   </span><br><span class="line">故最终约束结果为对3个`Loop_Entity`循环6次</span><br><span class="line"></span><br><span class="line">### 7. for循环其他优化  </span><br><span class="line"></span><br><span class="line">#### 函数实例的并行计算 </span><br><span class="line"></span><br><span class="line">使用`#pragma HLS ALLOCATIN instances=  limit=`实现函数并行约束  </span><br><span class="line">上述约束可以实现函数的示例，并进行并行计算  </span><br><span class="line"></span><br><span class="line">#### pipline rewind</span><br><span class="line"></span><br><span class="line">在`pipline`的约束下，选用`rewind`选项，可以实现不同循环之间的流水线处理  </span><br><span class="line"></span><br><span class="line">&#123;% asset_img rewind.png pipline rewind %&#125;  </span><br><span class="line"></span><br><span class="line">#### 循环边界为变量  </span><br><span class="line"></span><br><span class="line">循环边界为变量时，无法确定延时，解决方案如下：  </span><br><span class="line">- 设定`tripcount`参数  </span><br><span class="line">- 指定循环边界的数据类型为`ap_(u)int`</span><br><span class="line">- 使用`assert` </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>#include &lt;assert.h&gt; </p>
-<p>void test() {<br>    int i;<br>    assert (width &lt; 5);<br>    for (i &#x3D; 0; i &lt; width; i++) {<br>        Loop_Entity;<br>    }<br>}</p>
-<pre><code>
-三种方式相比之下采用assert延时最短使用资源最少
-</code></pre>
 
+<h3 id="2-变量初始化"><a href="#2-变量初始化" class="headerlink" title="2. 变量初始化"></a>2. 变量初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ap_int&lt;6&gt; a_6bit_var_c = -22;</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_d(22);</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_r2(&quot;0b101010&quot;, 2);   // 指定进制数</span><br><span class="line">ap_int&lt;6&gt; a_6bit_var_r2(&quot;101010&quot;, 2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-数据类型转换"><a href="#3-数据类型转换" class="headerlink" title="3. 数据类型转换"></a>3. 数据类型转换</h3><p>显示转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(Expected type) Variable</span><br><span class="line">Expected type (Variable)</span><br></pre></td></tr></table></figure>
+
+<p>常用运算的数据类型转换</p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/1.jpg" class="" title="数据类型转换">  
+<p>可以使用<code>&lt;typeinfo&gt;</code>库文件中的<code>typeid</code>来查看数据类型</p>
+<h2 id="for循环优化"><a href="#for循环优化" class="headerlink" title="for循环优化"></a>for循环优化</h2><h3 id="1-衡量指标"><a href="#1-衡量指标" class="headerlink" title="1. 衡量指标"></a>1. 衡量指标</h3><p><code>Loop Trip Count</code>：循环触发次数<br><code>Loop Iteration Latency</code>：迭代延时（单次迭代时延）<br><code>Loop Iteration Interval</code>：迭代间隔（两次迭代间隔）<br><code>Loop Latency</code>：循环时延（迭代时延 * 迭代次数）<br><code>Function Latency</code>：函数时延（完整for循环执行时延）<br><code>Function Iteration Interval</code>：函数间隔（两次循环的间隔，考虑到循环条件的判断，可能会多一个周期）</p>
+<h3 id="2-流水线处理"><a href="#2-流水线处理" class="headerlink" title="2. 流水线处理"></a>2. 流水线处理</h3><p>使用<code>#pragma HLS PIPLINE</code>添加约束  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/for_pipline.png" class="" title="流水线处理">  
+<p>流水线处理使得数据读取、计算、存储三个过程在一定程度上并行处理，即上一个数据在计算过程中就开始读取下一个数据  </p>
+<h3 id="3-循环展开"><a href="#3-循环展开" class="headerlink" title="3. 循环展开"></a>3. 循环展开</h3><p>使用<code>#pragma HLS UNROLL</code>添加约束  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/for_unroll.png" class="" title="循环展开">    
+<p>可以根据循环迭代参数<code>i</code>对循环计算并行处理，同时可以约束展开的子循环个数  </p>
+<h3 id="4-循环融合"><a href="#4-循环融合" class="headerlink" title="4. 循环融合"></a>4. 循环融合</h3><p>使用<code>#pragma HLS merge</code>添加约束  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/merge.png" class="" title="循环融合">   
+<p>循环融合可以将两个不具有顺序逻辑的循环同时执行<br>循环边界的界定如下：</p>
+<ul>
+<li><code>Loop_A</code>的循环次数为<code>M</code>，<code>Loop_B</code>的循环次数为<code>N</code>，合并后循环次数为<code>MAX(M, N)</code>  </li>
+<li>若一个循环边界为变量，另一个为常量时，无法合并  </li>
+<li>两个循环边界均为变量时，可以约束为共同循环部分和额外循环部分</li>
+</ul>
+<h3 id="5-数据流处理"><a href="#5-数据流处理" class="headerlink" title="5. 数据流处理"></a>5. 数据流处理</h3><p>使用<code>#pragma HLS dataflow</code>添加约束  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow.png" class="" title="数据流处理">  
+<p>数据流处理用于处理多循环连接问题，循环之间的通道使用<code>RAM</code>、<code>FIFO</code>或<code>Reg</code>实现，加速方式为在<code>Loop_B</code>处理的同时<code>Loop_A</code>进行下一组数据的处理</p>
+<h4 id="dataflow的局限性与解决方式"><a href="#dataflow的局限性与解决方式" class="headerlink" title="dataflow的局限性与解决方式"></a><code>dataflow</code>的局限性与解决方式</h4><p>当出现一个循环的结果要送入两个不同循环进行后续处理的情况时，无法直接使用dataflow  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow%E5%B1%80%E9%99%90%E6%80%A71.png" class="" title="dataflow局限性1">   
+<p>此时需要将第一个循环结果复制之后，分别送入两个循环  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow1.png" class="" title="dataflow局限性1处理">   
+
+<p>当出现一个循环结果经过不同处理过程最终又送入一个循环的情况时，无法直接使用dataflow  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow%E5%B1%80%E9%99%90%E6%80%A72.png" class="" title="dataflow局限性2">   
+<p>此时需要保证两个分支经过相同的处理模块，不需要处理时在模块内为简单的复制  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/dataflow2.png" class="" title="dataflow局限性2处理">     
+
+<h4 id="dataflow的存储管理"><a href="#dataflow的存储管理" class="headerlink" title="dataflow的存储管理"></a><code>dataflow</code>的存储管理</h4><p>标量、指针、引用变量以及函数返回值，HLS使用FIFO实现通道<br>数组，<code>HLS</code>使用<code>FIFO</code>或<code>ping-pong ram</code>实现：  </p>
+<ul>
+<li>若HLS确定数据流为顺序的，则默认使用深度为1的FIFO  </li>
+<li>若不能确定则使用<code>ping-pong ram</code></li>
+</ul>
+<p>上述配置可以在<code>congfig_dataflow</code>中配置，明确设定FIFO深度，存储器尺寸等  </p>
+<h3 id="6-嵌套循环优化"><a href="#6-嵌套循环优化" class="headerlink" title="6. 嵌套循环优化"></a>6. 嵌套循环优化</h3><p>嵌套循环主要通过<code>pipline</code>进行优化，<code>pipline</code>会合并上层循环、展开下层循环</p>
+<h4 id="a-循环边界为常数，循环体仅在最内层循环"><a href="#a-循环边界为常数，循环体仅在最内层循环" class="headerlink" title="a. 循环边界为常数，循环体仅在最内层循环"></a>a. 循环边界为常数，循环体仅在最内层循环</h4><p>对外层循环做pipline处理，会使内部循环全部展开，可以达到最低延时但是会消耗更多资源<br>对内层循环做pipline处理，会使外部循环展开，即若外部循环边界为<code>M</code>，内部循环边界为<code>N</code>，相当于执行<code>M*N</code>次内部循环，效果介于不处理和对外层循环处理之间<br>注：<code>Loop_flatten</code>展开最外层循环要求必须为<code>a</code>、<code>b</code>两种情况</p>
+<h4 id="b-循环边界为常数，循环体存在多层循环"><a href="#b-循环边界为常数，循环体存在多层循环" class="headerlink" title="b. 循环边界为常数，循环体存在多层循环"></a>b. 循环边界为常数，循环体存在多层循环</h4><p>以如下代码为例：  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/imperfect_loop1.png" class="" title="非完美循环示例">  
+
+<p>若对最内层做<code>pipline</code>处理，由于在<code>Col</code>循环内存在初始化，无法展开，仅能对<code>Row</code>和<code>Col</code>进行展开，最终结果为两层嵌套循环<br>若对中间层循环做<code>pipline</code>处理，仍为展开<code>Row</code>和<code>Col</code>，同时展平最内层循环，最终仅有一层循环<br>若对最外层循环做<code>pipline</code>处理，会展开所有子循环，即最终仅有一层循环且循环边界为<code>Col</code>的循环边界</p>
+<h4 id="unroll-vs-flatten"><a href="#unroll-vs-flatten" class="headerlink" title="unroll vs flatten"></a>unroll vs flatten</h4><p>对于for循环嵌套来说，<code>flatten</code>为合并两次循环，<code>unroll</code>为单个循环  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Loop_A:</span><br><span class="line">for (i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">    Loop_B:</span><br><span class="line">    for (j = 0; j &lt; 3; j++) &#123;</span><br><span class="line">        Loop_C:</span><br><span class="line">        for (k = 0; k &lt; 3; k++) &#123;</span><br><span class="line">            Loop_Entiy;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若对<code>Loop_B</code>使用<code>pipline</code>进行优化，HLS会合并（flatten）上层循环，展开（unroll）下层循环<br>合并<code>Loop_A</code>与<code>Loop_B</code>，即外部循环变为一个同时循环边界为两个循环的和<br>展开<code>Loop_C</code>，即同时计算<code>Loop_C</code>下每个循环变量对应的循环体<br>故最终约束结果为对3个<code>Loop_Entity</code>循环6次</p>
+<h3 id="7-for循环其他优化"><a href="#7-for循环其他优化" class="headerlink" title="7. for循环其他优化"></a>7. for循环其他优化</h3><h4 id="函数实例的并行计算"><a href="#函数实例的并行计算" class="headerlink" title="函数实例的并行计算"></a>函数实例的并行计算</h4><p>使用<code>#pragma HLS ALLOCATIN instances=  limit=</code>实现函数并行约束<br>上述约束可以实现函数的示例，并进行并行计算  </p>
+<h4 id="pipline-rewind"><a href="#pipline-rewind" class="headerlink" title="pipline rewind"></a>pipline rewind</h4><p>在<code>pipline</code>的约束下，选用<code>rewind</code>选项，可以实现不同循环之间的流水线处理  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/rewind.png" class="" title="pipline rewind">  
+
+<h4 id="循环边界为变量"><a href="#循环边界为变量" class="headerlink" title="循环边界为变量"></a>循环边界为变量</h4><p>循环边界为变量时，无法确定延时，解决方案如下：  </p>
+<ul>
+<li>设定<code>tripcount</code>参数  </li>
+<li>指定循环边界的数据类型为<code>ap_(u)int</code></li>
+<li>使用<code>assert</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;assert.h&gt; </span><br><span class="line"></span><br><span class="line">void test() &#123;</span><br><span class="line">    int i;</span><br><span class="line">    assert (width &lt; 5);</span><br><span class="line">    for (i = 0; i &lt; width; i++) &#123;</span><br><span class="line">        Loop_Entity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>三种方式相比之下采用assert延时最短使用资源最少  </p>
+<h2 id="数组优化"><a href="#数组优化" class="headerlink" title="数组优化"></a>数组优化</h2><p>在HLS中，根据数组所处位置会综合为不同的电路：<br>若数组为顶层函数接口，则会综合为用于访问外部存储器的RTL端口<br>若数组为函数内部数组，则根据约束综合为<code>BRAM</code>、<code>LUTRAM</code>、<code>UltraRAM</code>或<code>Register</code>  </p>
+<p>使用<code>#pragma HLS RESOURCE</code>可以约束实现数组的存储器类型如单口RAM、双口RAM等</p>
+<h3 id="1-数组分割（Array-Partition）"><a href="#1-数组分割（Array-Partition）" class="headerlink" title="1. 数组分割（Array Partition）"></a>1. 数组分割（Array Partition）</h3><p>数组分割的目的在于提高数据吞吐量<br>使用<code>#pragma HLS ARRAY_PARTITION</code>实现数组分割 </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/array_partition.png" class="" title="数组分割">
+
+<p>分割方式有三种：<br><code>block</code>：将数组按照顺序划分<br><code>cyclic</code>：将数组按照顺序划分后每个<code>block</code>取出一个元组构成分区<br><code>complete</code>：将数组完全拆开，使用寄存器形式  </p>
+<p>多维数组在分割时需要指定分割维度  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%88%86%E5%89%B2.png" class="" title="多维数组分割">  
+
+<h3 id="2-数组映射和重组"><a href="#2-数组映射和重组" class="headerlink" title="2. 数组映射和重组"></a>2. 数组映射和重组</h3><p>数组重组的目的在于减少资源消耗<br>使用<code>#pragma HLS ARRAY_MAP</code>进行数组映射</p>
+<h4 id="水平映射"><a href="#水平映射" class="headerlink" title="水平映射"></a>水平映射</h4><p>将数组<code>A[M]</code>、<code>B[N]</code>水平拼接，长度变为<code>M+N</code>，位宽可以不同，合并后为两者的最大值<br>通过设置<code>offset</code>参数可以使两个数组在合并时中间存在偏移量  </p>
+<h4 id="纵向映射"><a href="#纵向映射" class="headerlink" title="纵向映射"></a>纵向映射</h4><p>纵向映射即对两个数组在对应位置处进行拼接，长度为较长数组的长度，位宽为两个数组位宽之和  </p>
+<img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84%E7%BA%B5%E5%90%91%E6%8B%BC%E6%8E%A5.png" class="" title="数组纵向拼接">  
+
+<h4 id="数组变形"><a href="#数组变形" class="headerlink" title="数组变形"></a>数组变形</h4><p>数组变形的本质是将数组分割之后再重组，针对同一个数组，分割方式类比数组分割<br>使用<code>#pragma HLS ARRAY_RESHAPE</code>实现  </p>
+<h3 id="3-定义ROM"><a href="#3-定义ROM" class="headerlink" title="3. 定义ROM"></a>3. 定义ROM</h3><p>使用<code>const + initial value</code>可以定义一个<code>ROM</code>  </p>
+<p>为了方便维护可以在头文件中进行ROM的定义，注意引用方式  </p>
+<pre><code>const ap_int&lt;8&gt; COEF[N] = &#123;
+    #include &quot;data.dat&quot;
+&#125;;
+
+const ap_int&lt;8&gt; COEF[N] = &#123; #include &quot;data.dat&quot; &#125;;
+</code></pre>
+<p>在上述定义中，方式一可行、方式二不可行  </p>
+<p>通过提高输出延时可以有效调整时序  </p>
+<h3 id="4-数组初始化"><a href="#4-数组初始化" class="headerlink" title="4. 数组初始化"></a>4. 数组初始化</h3><p>初始化数组时需要加上<code>static</code>关键字，此时HLS会直接进行数组初始化，否则会因为初始化引入大量延时  </p>
+<h2 id="函数层面优化"><a href="#函数层面优化" class="headerlink" title="函数层面优化"></a>函数层面优化</h2><p><code>INLINE</code>：通过<code>INLINE</code>处理可以减少综合输出的模块化，使设计更为简洁<br><code>ALLOCATION</code>：可以使用<code>ALLOCATION</code>设置函数实例个数，可以实现函数的并行执行，相当于在空间和时间之间做平衡<br><code>DATAFLOW</code>：类比for循环的<code>dataflow</code>，在函数之间加设通道(<code>FIFO</code>、<code>Ping-Pong RAM</code>)来实现数据流处理  </p>
+<h2 id="约束汇总"><a href="#约束汇总" class="headerlink" title="约束汇总"></a>约束汇总</h2><h4 id="吞吐量优化约束"><a href="#吞吐量优化约束" class="headerlink" title="吞吐量优化约束"></a>吞吐量优化约束</h4><img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/%E5%90%9E%E5%90%90%E9%87%8F%E4%BC%98%E5%8C%96.png" class="" title="吞吐量优化"> 
+
+<h4 id="延时优化约束"><a href="#延时优化约束" class="headerlink" title="延时优化约束"></a>延时优化约束</h4><img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/%E5%BB%B6%E6%97%B6%E4%BC%98%E5%8C%96.png" class="" title="延时优化"> 
+
+<h4 id="空间约束"><a href="#空间约束" class="headerlink" title="空间约束"></a>空间约束</h4><img src="/2024/05/31/Vitis-HLS-%E5%9F%BA%E7%A1%80/%E5%8C%BA%E5%9F%9F%E7%BA%A6%E6%9D%9F.png" class="" title="空间优化"> 
       
     </div>
 
@@ -298,7 +387,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-06-03 15:17:19" itemprop="dateModified" datetime="2024-06-03T15:17:19+08:00">2024-06-03</time>
+                <time title="修改时间：2024-06-04 14:00:50" itemprop="dateModified" datetime="2024-06-04T14:00:50+08:00">2024-06-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -340,7 +429,14 @@
 <li>神经网络的运行能够有很高的并行度和更低的数据精度，因此可以执行速度更快、功耗更低</li>
 <li>结合第3点，目前有足以支撑神经网络计算的硬件平台，例如：GPU、Eyeriss架构等。在这些架构上可以轻松实现高资源利用率、高吞吐量，并只需要最少的特定于应用程序的调整或优化</li>
 </ol>
-<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>当前DL在物理层的应用分为两个方面：  </p>
+<ul>
+<li>使用DL增强现有算法  </li>
+<li>使用DL完全取代现有算法</li>
+</ul>
+<h3 id="使用DL增强现有算法"><a href="#使用DL增强现有算法" class="headerlink" title="使用DL增强现有算法"></a>使用DL增强现有算法</h3><p>这方面应用源于现有迭代算法的深度展开，将每次迭代解释为一组NN  </p>
+<h3 id="完全取代现有算法"><a href="#完全取代现有算法" class="headerlink" title="完全取代现有算法"></a>完全取代现有算法</h3><p>这方面应用直接推翻传统算法，完全使用DL实现如功率控制、调制识别、信号压缩、信道编码等</p>
+<h2 id="机器学习在物理层的应用"><a href="#机器学习在物理层的应用" class="headerlink" title="机器学习在物理层的应用"></a>机器学习在物理层的应用</h2><h3 id="AutoEncoder-实现端到端通信系统"><a href="#AutoEncoder-实现端到端通信系统" class="headerlink" title="AutoEncoder 实现端到端通信系统"></a><code>AutoEncoder</code> 实现端到端通信系统</h3><h3 id="AutoEncoder-实现多发多收通信系统"><a href="#AutoEncoder-实现多发多收通信系统" class="headerlink" title="AutoEncoder 实现多发多收通信系统"></a><code>AutoEncoder</code> 实现多发多收通信系统</h3><h3 id="Radio-Transformer-networks-实现增强信号处理算法"><a href="#Radio-Transformer-networks-实现增强信号处理算法" class="headerlink" title="Radio Transformer networks 实现增强信号处理算法"></a><code>Radio Transformer networks</code> 实现增强信号处理算法</h3><h3 id="CNNs-用于分类任务"><a href="#CNNs-用于分类任务" class="headerlink" title="CNNs 用于分类任务"></a><code>CNNs</code> 用于分类任务</h3>
       
     </div>
 
